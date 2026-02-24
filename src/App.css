@@ -1,0 +1,183 @@
+/* App specific styles for AI Digital Estimator */
+
+.estimator-root {
+  max-width: 1000px;
+  width: min(100%, 96vw);
+  margin: 0 auto; /* keep horizontally centered; vertical centering handled by body */
+  padding: 1.25rem;
+  color: var(--text-color, rgba(255,255,255,0.95));
+}
+
+.estimator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.brand {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+.brand-logo {
+  font-size: 2.4rem;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#3b82f6cc,#7c3aedcc);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.estimator-main {
+  display: grid;
+  /* left column will grow but not exceed large widths; right column kept at comfortable fixed width */
+  grid-template-columns: minmax(360px, 1fr) 360px;
+  gap: 1rem;
+  align-items: stretch; /* make both columns match height */
+}
+
+.panel {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+}
+
+.input-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-height: 420px; /* keep left panel visually balanced with right */
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.label { display:block }
+
+.rfp-textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 180px;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.25);
+  color: inherit;
+}
+
+/* Ensure direct children of panels align to panel inner width */
+.panel > * { width: 100%; }
+
+.controls {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: inherit;
+  cursor: pointer;
+  min-width: 120px; /* uniform button sizing */
+}
+.btn.primary {
+  background: linear-gradient(90deg,#4f46e5,#06b6d4);
+  color: white;
+  border: none;
+  min-width: 140px;
+}
+.btn:disabled { opacity: 0.6; cursor: not-allowed }
+
+.error { color: #ff6b6b; margin-top: 0.5rem }
+
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 420px; /* keep right column balanced */
+}
+
+.card {
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* ensure card expands to fill column height */
+}
+
+.empty { color: rgba(255,255,255,0.55); padding: 0.6rem 0 }
+
+.json-output {
+  max-height: 260px;
+  overflow: auto;
+  background: rgba(0,0,0,0.28);
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.rom-grid { display:flex; gap:1rem; }
+.rom-item { flex:1; padding:0.6rem; background: rgba(0,0,0,0.18); border-radius:8px; }
+.rom-label { font-size:0.85rem; color: rgba(255,255,255,0.7); }
+.rom-value { font-size:1.5rem; font-weight:700; margin-top:0.3rem }
+
+.estimator-footer { margin-top:1rem; text-align:center; color:rgba(255,255,255,0.55); font-size:0.85rem }
+
+@media (max-width: 900px) {
+  .estimator-main { grid-template-columns: 1fr; }
+  .results-panel { order: 2 }
+  .input-panel, .results-panel { min-height: auto }
+}
+
+/* Decorative background shapes */
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 10% 10%, rgba(99,102,241,0.12), transparent 8%),
+    radial-gradient(circle at 85% 80%, rgba(6,182,212,0.08), transparent 10%),
+    linear-gradient(180deg, rgba(6,6,23,0.65), rgba(8,8,20,0.6));
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Card header styles for clear separation */
+.card-header { padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.04); margin-bottom: 0.6rem }
+.card-header h3 { margin: 0; font-size: 1.05rem }
+.card-body { min-height: 120px }
+
+/* Ensure cards look aligned and consistent */
+.card { display:flex; flex-direction:column }
+.rom-card .card-body { display:flex; align-items:center; justify-content:center }
+
+/* Slight elevation for better separation */
+.panel { backdrop-filter: blur(6px); }
+
+@media (max-width: 640px) {
+  .brand-logo { width:48px; height:48px; font-size:1.5rem }
+  .header-illustration { display:none }
+}
