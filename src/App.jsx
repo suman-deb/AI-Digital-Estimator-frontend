@@ -12,7 +12,7 @@ function App() {
     setLoading(true);
     setResult(null);
     try {
-      const res = await fetch("http://localhost:7071/api/generate-rom", {
+      const res = await fetch("https://func-digital-estimator-czhpbua7ggbqd7hs.swedencentral-01.azurewebsites.net/api/generate_rom_api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
